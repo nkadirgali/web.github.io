@@ -1,0 +1,44 @@
+body{
+    display: flex;
+    background-color: black;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.burgerdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.burger{
+    transition: all 0.3s;
+    height: 3px;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+}
+.first{
+    transform-origin: center;
+    transform: translate(0,8.5px) rotate(45deg);
+}
+.middle{
+    transform: scale(0);
+}
+.last{
+    transform-origin: center;
+    transform: translate(0,-8.5px) rotate(-45deg);
+}
+.ashvr{
+    border-radius: 10px;
+    transition: all .1s ease;
+}
+.ashvr_active{
+    background-color: red;
+}
+.ashvr:hover{
+    transform: scale(1.1);
+    background-color: #fd7e14;
+}
+@media screen and (max-width: 575px) {
+
+}
