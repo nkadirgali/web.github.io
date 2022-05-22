@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('includes/links1')%>
+        <title>Blog</title>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/admin.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+    </head>
+    <body id="body" style=";">
+        <%- include('includes/header')%>
+        <div style="margin-top: 56px;display: flex;flex-wrap: wrap;width: 100%;background-color: red;height: 100vh;">
+            <div class="col-6 centerdiv" style="height: 50%;">
+                <a href="/admin/" class="text-light link1 centerdiv" style="">Users</a>
+            </div>
+            <div class="col-6 centerdiv" style="height: 50%;">
+                <a href="/admin/" class="text-light link1 centerdiv" style="">Posts</a>
+            </div>
+            <div class="col-6 centerdiv" style="height: 50%;">
+                <a href="/contact" class="text-light link1 centerdiv" style="">Contacts</a>
+            </div>
+        </div>
+        <%- include('includes/footer')%>
+        <script type="text/javascript" src="public/js/index.js"></script>
+    </body>
+</html>

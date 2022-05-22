@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('includes/links1');%>
+        <title>Weather</title>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+    </head>
+    <body id="body">
+        <%- include('includes/header')%>
+        <div style='background-color: black;color: white;width: 100%;height: 100vh;padding: 10px;margin-top: 56px;'>
+            <h1>Weather in <%= city%></h1>
+            <h2><%= temp%>°C</h2>
+            <div style="display: flex;flex-direction: row;">
+                <img src="<%= url%>">
+                <div style="line-height: 50px;text-transform: capitalize;"><%= description%></div>
+            </div><br>
+            <div>Wind speed: <%= windSpeed%> km/h <i class="fa-solid fa-wind"></i></div>
+        </div>
+        <%- include('includes/footer')%>
+        <script type="text/javascript" src="js/resizeBody.js"></script>
+    </body>
+</html>

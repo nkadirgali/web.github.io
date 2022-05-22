@@ -1,0 +1,10 @@
+#triangle1{
+    transition: all 1s;
+    transform-origin: center;
+}
+.rotatedTriangle1{
+    transform: rotate(90deg);
+}
+.rotatedTriangle2{
+    transform: rotate(-90deg);
+}

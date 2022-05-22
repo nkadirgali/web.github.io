@@ -39,18 +39,21 @@
             </div>
         </nav>
         <div style="margin-top: 56px;width: 100%;">
-            <section class="contact-us-section">
-                <h2>Contact us</h2>
-                <p>If you have any questions or have any suggestions, write to us</p>
-                <div class="contact-us-container">
-                    <div class="input-fields">
-                        <input type="text" placeholder="Your Name">
-                        <input type="email" placeholder="Enter Your Email">
+            <form method="post" action="/contact">
+                <section class="contact-us-section" style="height: 100vh;">
+                    <h2>Contact us</h2>
+                    <p>If you have any questions or have any suggestions, write to us</p>
+                    <div class="contact-us-container">
+                        <div class="input-fields">
+                            <input name="name" type="text" placeholder="Your Name">
+                            <input name="email" type="email" placeholder="Enter Your Email">
+                        </div>
+                        <textarea name="text" id="" cols="40" rows="10" placeholder="Your Message"></textarea>
                     </div>
-                    <textarea name="" id="" cols="40" rows="10" placeholder="Your Message"></textarea>
-                </div>
-                <button>Send a message</button>
-            </section>
+                    <button type="submit">Send a message</button>
+                    <%= message%>
+                </section>
+            </form>
             <%- include('includes/footer');%>
         </div>
         <script type="text/javascript" src="public/js/index.js"></script>

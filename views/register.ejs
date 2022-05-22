@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <%- include('includes/links1');%>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Registration</title>
@@ -30,33 +31,50 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="form-control" style="margin-bottom: 22px;">
+                                    <div style="margin-bottom: 22px;">
                                         <input required style="border-radius: 5px;padding: 0 20px;font-size: 16px;line-height: 30px;border-color: #666;" type="password" id="password2" name="password2" placeholder="Repeat password">
-                                        <i class="fas fa-check-circle"></i>
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <small>Error message</small>
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="form-control" style="margin-bottom: 22px;">
+                                    <div style="margin-bottom: 22px;">
                                         <input required style="border-radius: 5px;padding: 0 20px;font-size: 16px;line-height: 30px;border-color: #666;" type="email" id="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
                             </div>
+
+                            <div>
+                                <%= message%>
+                            </div>
+
                             <div style="padding-top: 15px;">
                                 <button style="background: #4272d7;border-radius: 5px;line-height: 50px;width: 100%;cursor: pointer;font-size: 18px;color: white;outline: none;border: none;" type="submit">Sign up</button>
                             </div>
+                            <div style="display: flex;flex-direction: column;align-items: center;padding-top: 15px;">
+                                <span style="font-size: 14px;/* line-height: 1.5px; */color: #666666;padding-bottom: 17px;height: 38px;">Have an account?</span>
 
-							<div style="display: flex;flex-direction: column;align-items: center;padding-top: 15px;">
-								<span style="font-size: 14px;line-height: 1.5px;color: #666666;padding-bottom: 17px;">Have an account?</span>
+                                <a href="/login" style="font-size: 14px;/* line-height: 1.5px; */text-transform: uppercase;text-decoration: none;background-color: transparent;">Login</a>
+                            </div>
+<!--							<div style="display: flex;flex-direction: column;align-items: center;padding-top: 15px;">-->
+<!--								<span style="font-size: 14px;line-height: 1.5px;color: #666666;padding-bottom: 17px;">Have an account?</span>-->
 
-								<a href="login" style="font-size: 14px;line-height: 1.5px;text-transform: uppercase;text-decoration: none;background-color: transparent;">Login</a>
-							</div>
+<!--								<a href="login" style="font-size: 14px;line-height: 1.5px;text-transform: uppercase;text-decoration: none;background-color: transparent;">Login</a>-->
+<!--							</div>-->
+                            <div class="col" style="margin-top: 10px;">
+                                <div class="card social-block">
+                                    <div class="card-body">
+                                        <a class="btn btn-block" href="/auth/google" role="button">
+                                            <i class="fab fa-google"></i>
+                                            Sign Up with Google
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+        <%- include('includes/footer');%>
 <!--        <script src="/js/register.js"></script>-->
 
     <!--<script src="vendor/jquery/jquery.min.js"></script>

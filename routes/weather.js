@@ -21,23 +21,14 @@ router
                         let icon=json2.weather[0].icon;
                         let windSpeed=json2.wind.speed;
                         let temp=json2.main.temp;
-                        let head="<!DOCTYPE html>\n" +
-                            "<html>\n" +
-                            "<head>\n" +
-                            "    <script src=\"https://kit.fontawesome.com/a11c966e05.js\" crossorigin=\"anonymous\"></script>\n" +
-                            "    <meta charset=\"utf-8\">\n" +
-                            "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n" +
-                            "    <title>Weather</title>\n" +
-                            "    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n" +
-                            "    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n" +
-                            "</head>";
-                        let ans=head+"<body style='margin: 0;'>\n<div style='background-color: black;color: white;width: 100vw;height: 100vh;padding: 10px;'>\n";
-                        ans+="<h1>Weather in "+city+"</h1>";
-                        ans+="<h2>"+temp+"°C</h2>";
-                        let url3="https://openweathermap.org/img/wn/" + icon + ".png";
-                        ans+="<div style='display: flex;flex-direction: row;'>\n<img src=\""+url3+"\"> <div style='line-height: 50px;text-transform: capitalize;'>"+description+"</div></div><br>";
-                        ans+="<div>Wind speed: "+windSpeed+" km/h <i class=\"fa-solid fa-wind\"></i></div></div>\n</div>\n</body>";
-                        res.send(ans);
+                        let url="https://openweathermap.org/img/wn/" + icon + ".png";
+                        res.render("weather",{
+                            city: city,
+                            temp: temp,
+                            url: url,
+                            description: description,
+                            windSpeed: windSpeed
+                        })
                     })
                 })
             });

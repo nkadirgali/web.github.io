@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--    <link rel="icon" type="image/x-icon" href="img/Канэки-Кэн2.png"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Change password</title>
+    <!--		<link rel="stylesheet" href="public/css/index.css">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/editprofile.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div>
+    <%- include('includes/header');%>
+    <div style="margin-top: 56px;height: 100vh;">
+        <div class="main">
+            <div class="main2">
+                <ul class="ul1">
+                    <li>
+                        <a class="hard fuQUr" href="/accounts/edit/" tabindex="0">Редактировать профиль</a>
+                    </li>
+                    <li>
+                        <a class="hard fuQUr" href="/accounts/password/change/" tabindex="0">Сменить пароль</a>
+                    </li>
+                    <li>
+                        <a class="hard HRM" href="/accounts/delete/" tabindex="0">Delete account</a>
+                    </li>
+                </ul>
+                <article class="PVkFi">
+                    <div class="C_9MP">
+<!--                        <div class="LqNQc">-->
+<!--                            <div class="M-jxE">-->
+<!--                                <button class="IalUJ " title="Фото профиля">-->
+<!--                                    <img alt="Фото профиля" class="be6sR" src="https://scontent-mct1-1.cdninstagram.com/v/t51.2885-19/44884218_345707102882519_2446069589734326272_n.jpg?efg=eyJybWQiOiJpZ19hbmRyb2lkX21vYmlsZV9uZXR3b3JrX3N0YWNrX3N5c3RlbV90Y3BfZmFsbGJhY2tfd2l0aF9wb3N0XzI6Y29udHJvbCJ9&amp;_nc_ht=scontent-mct1-1.cdninstagram.com&amp;_nc_cat=1&amp;_nc_ohc=8P32SGEOOq0AX9fEgpe&amp;edm=AJXOVykBAAAA&amp;ccb=7-4&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.2-ccb7-4&amp;oh=00_AT-bB-dgXmOHrrOGN25twblN7Q1lSn8qlU1x81mMyGwVBQ&amp;oe=6269F88F&amp;_nc_sid=9c1db7">-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="XX1Wc">
+                            <h1 class=" QXEMa" title="nkadirgali">nkadirgali</h1>
+                        </div>
+                    </div>
+                    <form class="iElgJ" method="post">
+                        <div class="eE-OA">
+                            <aside class="sxIVS">
+                                <label for="cppConfirmPassword">Подтвердите пароль</label>
+                            </aside>
+                            <div class="ada5V">
+                                <input autocomplete="new-password" class="j_2Hd RO68f  M5V28" id="cppConfirmPassword" name="cppConfirmPassword" required="" spellcheck="true" type="password" value="">
+                            </div>
+                        </div>
+                        <div class="eE-OA">
+                            <aside class="sxIVS  tvweK"><label></label></aside>
+                            <div class="ada5V">
+                                <div class="_5Q0UX">
+                                    <button class="sqdOP L3NKy y3zKF btn-danger" disabled="" type="button">Delete account</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </article>
+            </div>
+        </div>
+    </div>
+    <%- include('includes/footer');%>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a11c966e05.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>

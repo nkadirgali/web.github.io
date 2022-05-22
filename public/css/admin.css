@@ -1,0 +1,18 @@
+.centerdiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.link1{
+    background-color: #0095f6;
+    text-decoration: none;
+    font-size: 50px;
+    width: 90%;
+    height: 90%;
+    border-radius: 25px;
+    transition: transform 0.5s;
+}
+.link1:hover{
+    background-color: orange;
+    transform: scale(1.05);
+}

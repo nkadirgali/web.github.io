@@ -15,29 +15,8 @@
 	</head>
     <body>
     	<div>
-    		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="--bs-bg-opacity: 0.4;">
-	            <div class="container-fluid">
-	                <div style="display: flex;min-width: 100%;justify-content: space-between;align-items: center">
-	                    <div>
-	                        <a href="/" class="nav-link text-light cs">Blog</a>
-	                    </div>
-	                    <div style="display: flex;align-content: center">
-	                        <input name="search" placeholder="Search" autocomplete="none" style="max-height: 40px;">
-	                    </div>
-	                    <div class="justify-content-end">
-	                        <ul class="navbar-nav">
-	                            <li class="nav-item">
-	                                <a class="nav-link text-uppercase text-light ashvr txttheme cs" href="/"><i class="fas fa-home"></i></a>
-	                            </li>
-	                            <li class="nav-item">
-	                                <a class="nav-link text-uppercase text-light ashvr txttheme cs" href="/profile"><i class="fas fa-user"></i></a>
-	                            </li>
-	                        </ul>
-	                    </div>
-	                </div>
-	            </div>
-	        </nav>
-			<div style="margin-top: 56px;">
+			<%- include('includes/header');%>
+			<div style="margin-top: 56px;height: 100vh;">
 				<div class="main">
 					<div class="main2">
 						<ul class="ul1">
@@ -46,6 +25,9 @@
 							</li>
 							<li>
 								<a class="hard fuQUr" href="/accounts/password/change/" tabindex="0">Сменить пароль</a>
+							</li>
+							<li>
+								<a class="hard fuQUr" href="/accounts/delete/" tabindex="0">Delete account</a>
 							</li>
 						</ul>
 						<article class="article1">
@@ -61,13 +43,13 @@
 <!--									</div>-->
 <!--								</div>-->
 								<div class="XXX1Wc">
-									<h1 class="kHYQv" title="nkadirgali">nkadirgali</h1>
+									<h1 class="kHYQv"><%= username%></h1>
 <!--									<button style="text-align: left;border: 0;color: #0095f6;display: inline-block;appearance: none;background: 0 0;cursor: pointer;font-size: 14px;font-weight: 600;text-overflow: ellipsis;text-transform: inherit;user-select: none;" type="button">Изменить фото профиля</button>-->
-									<div style="">
-										<form enctype="multipart/form-data" method="POST" role="presentation">
-											<input accept="image/jpeg,image/png" class="tb_sK" type="file">
-										</form>
-									</div>
+<!--									<div style="">-->
+<!--										<form enctype="multipart/form-data" method="POST" role="presentation">-->
+<!--											<input accept="image/jpeg,image/png" class="tb_sK" type="file">-->
+<!--										</form>-->
+<!--									</div>-->
 								</div>
 							</div>
 							<form class="kWXsT" method="POST">
@@ -76,10 +58,10 @@
 										<label for="pepName">Имя</label>
 									</aside>
 									<div class="ada5V">
-										<div class="               AC7dP        Igw0E     IwRSH      eGOV_         _4EzTm" style="width: 100%; max-width: 355px;">
-											<input aria-required="false" id="pepName" placeholder="Имя" type="text" class="JLJ-B zyHYP" value="Нурдаулет Кадиргали">
-											<div class="             qF0y9          Igw0E     IwRSH      eGOV_         _4EzTm    bkEs3                                                        aGBdT                                                  " style="width: 100%; max-width: 355px;">
-												<div class="             qF0y9          Igw0E     IwRSH      eGOV_         _4EzTm      MGdpg                                                                                                        ">
+										<div class="AC7dP Igw0E IwRSH eGOV_ _4EzTm" style="width: 100%; max-width: 355px;">
+											<input name="fullName" aria-required="false" id="pepName" placeholder="Имя" type="text" class="JLJ-B zyHYP" value="<%= fullName%>">
+											<div class="qF0y9 Igw0E IwRSH eGOV_ _4EzTm bkEs3 aGBdT" style="width: 100%; max-width: 355px;">
+												<div class="qF0y9 Igw0E IwRSH eGOV_ _4EzTm MGdpg">
 												</div>
 											</div>
 										</div>
@@ -89,7 +71,7 @@
 									<aside class="sxIVS  "><label for="pepUsername">Имя пользователя</label></aside>
 									<div class="ada5V">
 										<div class="               AC7dP        Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              " style="width: 100%; max-width: 355px;">
-											<input aria-required="true" id="pepUsername" placeholder="Имя пользователя" type="text" class="JLJ-B zyHYP" value="nkadirgali">
+											<input aria-required="true" id="pepUsername" placeholder="Имя пользователя" type="text" class="JLJ-B zyHYP" value="<%= username%>" name="username">
 											<div class="             qF0y9          Igw0E     IwRSH      eGOV_         _4EzTm    bkEs3                                                        aGBdT                                                  " style="width: 100%; max-width: 355px;">
 												<div class="             qF0y9          Igw0E     IwRSH      eGOV_         _4EzTm      MGdpg                                                                                                        ">
 												</div>
@@ -106,10 +88,10 @@
 <!--										</div>-->
 <!--									</div>-->
 <!--								</div>-->
-								<div class="eE-OA">
-									<aside class="sxIVS  "><label for="pepBio">О себе</label></aside>
-									<div class="ada5V"><textarea class="p7vTm" id="pepBio"></textarea></div>
-								</div>
+<!--								<div class="eE-OA">-->
+<!--									<aside class="sxIVS  "><label for="pepBio">О себе</label></aside>-->
+<!--									<div class="ada5V"><textarea class="p7vTm" id="pepBio"></textarea></div>-->
+<!--								</div>-->
 <!--								<div class="eE-OA">-->
 <!--									<aside class="sxIVS  tvweK"><label></label></aside>-->
 <!--									<div class="ada5V">-->
@@ -124,37 +106,37 @@
 									<aside class="sxIVS  "><label for="pepEmail">Эл. адрес</label></aside>
 									<div class="ada5V">
 										<div class="               AC7dP        Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              " style="width: 100%; max-width: 355px;">
-											<input aria-required="false" id="pepEmail" placeholder="Эл. адрес" type="text" class="JLJ-B zyHYP" value="nkadirgali@list.ru">
+											<input aria-required="false" id="pepEmail" placeholder="Эл. адрес" type="text" class="JLJ-B zyHYP" value="<%= email%>" name="email">
 										</div>
 									</div>
 								</div>
-								<div class="eE-OA">
-									<aside class="sxIVS  "><label for="pepPhone Number">Номер телефона</label></aside>
-									<div class="ada5V">
-										<div class="               AC7dP        Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              " style="width: 100%; max-width: 355px;">
-											<input aria-required="false" id="pepPhone Number" placeholder="Номер телефона" type="text" class="JLJ-B zyHYP" value="+7 705 821 1569">
-										</div>
-									</div>
-								</div>
-								<div class="qF0y9 Igw0E IwRSH eGOV_ _4EzTm ">
-									<div class="eE-OA">
-										<aside class="sxIVS  "><label for="pepGender">Пол</label></aside>
-										<div class="ada5V">
-											<div class="             qF0y9          Igw0E _56XdI          eGOV_        vwCYk                                                                                                               " style="max-width: 355px;">
-												<select id="pepGender">
-													<option value="male">Male</option>
-													<option value="female">Female</option>
-													<option value="prefNotToSay">Prefer Not To Say</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
+<!--								<div class="eE-OA">-->
+<!--									<aside class="sxIVS  "><label for="pepPhone Number">Номер телефона</label></aside>-->
+<!--									<div class="ada5V">-->
+<!--										<div class="               AC7dP        Igw0E     IwRSH      eGOV_         _4EzTm                                                                                                              " style="width: 100%; max-width: 355px;">-->
+<!--											<input aria-required="false" id="pepPhone Number" placeholder="Номер телефона" type="text" class="JLJ-B zyHYP" value="+7 705 821 1569">-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="qF0y9 Igw0E IwRSH eGOV_ _4EzTm ">-->
+<!--									<div class="eE-OA">-->
+<!--										<aside class="sxIVS  "><label for="pepGender">Пол</label></aside>-->
+<!--										<div class="ada5V">-->
+<!--											<div class="             qF0y9          Igw0E _56XdI          eGOV_        vwCYk                                                                                                               " style="max-width: 355px;">-->
+<!--												<select id="pepGender">-->
+<!--													<option value="male">Male</option>-->
+<!--													<option value="female">Female</option>-->
+<!--													<option value="prefNotToSay">Prefer Not To Say</option>-->
+<!--												</select>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
 								<div class="eE-OA">
 									<aside class="sxIVS tvweK"><label></label></aside>
 									<div class="ada5V">
 										<div class="fi8zo">
-											<button class="sqdOP L3NKy y3zKF" disabled="" type="button">Отправить</button>
+											<button class="sqdOP L3NKy y3zKF" type="submit">Отправить</button>
 										</div>
 									</div>
 								</div>
@@ -163,22 +145,7 @@
 					</div>
 				</div>
 			</div>
-			<footer class="footer-section">
-				<div class="footer-container">
-					<div class="menu">
-						<h2 class="footer-text">Blog</h2>
-					</div>
-					<div class="menu">
-						<h2>Contacts</h2>
-						<div class="menu-items">
-							<p><i class="fa-solid fa-envelope"></i> Email: blog@support.kz</p>
-							<p><i class="fa-solid fa-phone"></i> Phone: +7-777-777-77-77</p>
-							<p><i class="fa-solid fa-paper-plane"></i> Telegram: @blog</p>
-							<a href="/sendMessage">Send a message</a>
-						</div>
-					</div>
-				</div>
-			</footer>
+			<%- include('includes/footer');%>
     	</div>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://kit.fontawesome.com/a11c966e05.js" crossorigin="anonymous"></script>

@@ -1,4 +1,6 @@
 const PostModel = require('../models/PostModel')
+let userModel = require('../models/UserModel');
+
 // Create and Save a new user
 exports.create = async (req, res,) => {
     if (!req.body.text) {
@@ -7,16 +9,23 @@ exports.create = async (req, res,) => {
     }
 
     const post = new PostModel({
-        author: req.params.username,
-        authorId: req.params.id,
-        text: req.body.text
+        authorId: req.user._id,
+//        authorId: req.params.id,
+        text: req.body.text,
+        date: Date.now()
     });
 
     await post.save().then(data => {
-        res.send({
+        res.render("status",{
+            typeOfModel: "Post",
+            typeOfOperation: "Create",
+            message: "Post created succesfully!"
+        })
+//        res.render("profile");
+/*        res.send({
             message:"Post created successfully!!",
             post:data
-        });
+        });*/
 //        res.render('results', {mydata: "user "+ data.firstName +" created succesfully!"})
     }).catch(err => {
         res.status(500).send({
@@ -77,10 +86,33 @@ exports.updateText = async (req, res) => {
         });
     });
 };
+exports.updateComplain = async (req,res) => {
+    const id = req.params.id;
+
+    let post={isComplained: true};
+    let postq= await PostModel.findById(id);
+    let user=await userModel.findById(postq.authorId);
+//    console.log(user);
+    await PostModel.findByIdAndUpdate(id, post, { useFindAndModify: false }).then(data => {
+        if (!data) {
+            res.status(404).send({
+                message: `Post not found.`
+            });
+        }else{
+            res.redirect("/user/find/"+user.username);
+//            res.send({ message: "Post updated successfully." })
+        }
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message
+        });
+    });
+}
 // Delete a user with the specified id in the request
 exports.destroy = async (req, res) => {
+//    console.log(req.params.id);
     //await UserModel.findByIdAndRemove(req.params.id).then(data => {
-    await PostModel.deleteOne({_id: req.query.postId}).then(data => {
+    await PostModel.deleteOne({_id: req.params.id}).then(data => {
         //await UserModel.findByIdAndRemove(req.query.id).then(data => {
         if (!data) {
             res.status(404).send({
@@ -88,10 +120,24 @@ exports.destroy = async (req, res) => {
             });
 //            res.status(404).render('results', {mydata: "User not found"})
 
-        } else {
-            res.send({
-                message: "Post deleted successfully!"
+        }else if(data.deletedCount===0){
+            res.render("status",{
+                typeOfModel: "Contact",
+                typeOfOperation: "Delete all contacts",
+                message: "Contacts not found"
             });
+            // res.status(404).send({
+            //     message: `Contacts not found.`
+            // });
+        }  else {
+            res.render("status",{
+                typeOfModel: "Post",
+                typeOfOperation: "Delete post",
+                message: "Post deleted successfully!"
+            })
+/*            res.send({
+                message: "Post deleted successfully!"
+            });*/
 //            res.render('results', {mydata: "user "+data.firstName+" deleted succesfully!"})
         }
     }).catch(err => {
