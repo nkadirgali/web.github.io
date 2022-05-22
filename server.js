@@ -62,10 +62,10 @@ app.get('/auth/google/globolg',
         res.redirect('/');
     });
 
-const port = process.env.PORT || 3000;
-// if (port == null || port == "") {
-//     port = 3000;
-// }
+let port = process.env.PORT;// || 3000;
+if (port == null || port == "") {
+    port = 3000;
+}
 
 app.listen(port, () => {
     console.log(`Server is listening on port http://localhost:${port}`);
