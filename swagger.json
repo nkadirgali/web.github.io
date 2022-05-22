@@ -1,0 +1,681 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Blog",
+    "description": "My User Project Application API. Link to the main page [localport](http://localhost:3000).",
+    "license": {
+      "name": "AITU",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    },
+    {
+      "name": "Posts",
+      "description": "API for posts in the system"
+    },
+    {
+      "name": "Contacts",
+      "description": "API for contacts in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Find all users in system",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "All users finded",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create new user in system",
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body.username",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fullName",
+            "in": "body.fullName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body.email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body.password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user is created",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Logs user into the system",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body.username",
+            "description": "The username for login",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body.password",
+            "description": "The password for login",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesful operation",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "",
+        "description": "Create new user in system",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body.username",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body.password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesfully logged",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "",
+        "description": "Display user",
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Display profile of the user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/user/find/{username}": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "",
+        "description": "Display profile of user",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json/ejs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Display profile of other user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/user/update/{username}": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Complain about the user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesfully complained to the user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/user/updateComplain/{username}": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Complain about the post",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesfully complained to the user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/user/delete/{username}": {
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete the user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesfully deleted the user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/user/deleteUsers": {
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Delete all users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesfully deleted all user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/contact": {
+      "get": {
+        "tags": ["Contacts"],
+        "summary": "Get all contacts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "All contacts finded",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Contacts"],
+        "summary": "Create a new contact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body.email",
+            "description": "The email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body.name",
+            "description": "The name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "text",
+            "in": "body.text",
+            "description": "Your problem or message to moderator",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact succesfully submitted",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/contact/delete/{id}": {
+      "delete": {
+        "tags": ["Contacts"],
+        "summary": "Delete contact",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of contact",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Contact succesfully deleted",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/contact/deleteContacts": {
+      "delete": {
+        "tags": ["Contacts"],
+        "summary": "Delete all contacts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Contacts succesfully deleted",
+            "schema": {
+              "$ref": "#/definitions/Contact"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/post": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "Get all posts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "All posts finded",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/post/find/{username}": {
+      "get": {
+        "tags": ["Posts"],
+        "summary": "Get all posts of user",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All posts finded",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/post/create/{username}": {
+      "post": {
+        "tags": ["Posts"],
+        "summary": "Create a new post",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "text",
+            "in": "body.text",
+            "description": "Text of post",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post succesfully created",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/post/updateComplain/{id}": {
+      "patch": {
+        "tags": ["Posts"],
+        "summary": "Complain about the post",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Succesfully complained to the post",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    },
+    "/post/delete/{id}": {
+      "delete": {
+        "tags": ["Posts"],
+        "summary": "Delete post",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of post",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post succesfully deleted",
+            "schema": {
+              "$ref": "#/definitions/Post"
+            }
+          },
+          "409": {
+            "description": "Database error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["email"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string",
+          "default": ""
+        },
+        "username": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "googleId": {
+          "type": "string"
+        },
+        "posts": {
+          "type": "array",
+          "default": []
+        },
+        "likedPosts": {
+          "type": "array",
+          "default": []
+        },
+        "subscribers": {
+          "type": "array",
+          "default": []
+        },
+        "subscriptions": {
+          "type": "array",
+          "default": []
+        },
+        "statusAcc": {
+          "type": "boolean",
+          "default": false
+        },
+        "isModerator": {
+          "type": "boolean",
+          "default": false
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "default": false
+        },
+        "isComplained": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    },
+    "Contact": {
+      "required": ["email","name","text"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "Post": {
+      "required": [],
+      "properties": {
+        "authorId": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "likes": {
+          "type": "array",
+          "default": []
+        },
+        "date": {
+          "type": "string"
+        },
+        "isComplained": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  }
+}
