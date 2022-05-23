@@ -1,6 +1,7 @@
 const UserModel = require('../models/UserModel')
 // Create and Save a new user
 const passport = require("passport");
+const {lookup} = require("passport-local/lib/utils");
 
 exports.create = async (req, res,) => {
     let user = new UserModel({
@@ -79,8 +80,32 @@ exports.login = async (req, res) => {
 exports.findAll = async (req, res) => {
     try {
         const user = await UserModel.find().exec();
-
-        res.status(200).json(user);
+//        console.log(user);
+        let div1="<div style=\"display: flex;flex-direction: column;width: 100%;margin-top: 10px;\">\n" +
+            "                        <div style=\"display: flex;width: 100%;flex-direction: column;background-color: #666666;padding: 10px;border: 1px solid black;\">\n" +
+            "                            <div style=\"display: flex;flex-direction: row;width: 100%;justify-content: space-between;\">\n" +
+            "                                <ul class=\"navbar-nav\" style=\"display: flex;flex-direction: row;align-items: center;\">\n" +
+            "                                    <li class=\"nav-item\" style=\"margin-right: 5px\">\n" +
+            "                                        <div class=\"text-white\">\n" +
+            "                                            username:\n" +
+            "                                            <a href=\"/user/find/",
+            div2="\" class=\"linkToUser find1\">",
+            div3="</a>\n" +
+            "                                        </div>\n" +
+            "                                    </li>\n" +
+            "                                    <li>|</li>\n" +
+            "                                    <li class=\"nav-item\" style=\"margin: 0 5px;\">\n" +
+            "                                        <div style=\"flex-direction: row;display: flex;\">Full name: <div class=\"find1\" style=\"margin-left: 5px;\">",
+            div4="</div></div>\n" +
+            "                                    </li>\n" +
+            "                                </ul>\n" +
+            "                            </div>\n" +
+            "                        </div>\n" +
+            "                    </div>",ans="";
+        for(let i=0;i<user.length;i++){
+            ans+=div1+user[i].username+div2+user[i].username+div3+user[i].fullName+div4;
+        }
+        res.render("findUser",{content: ans});
 //        res.status(200).render('results', {mydata: user})
     } catch(error) {
 //        res.status(404).render('results', {mydata: error.message})
@@ -156,8 +181,9 @@ exports.findOne = async (req,res) => {
                 "                        </div>\n" +
                 "                    </div>\n" +
                 "                </div>",ans="";
+        let div1_2=div1+req.params.username+div2;
         for(let i=0;i<posts.length;i++){
-            ans+=div1+posts[i].author+div2+posts[i].date+div3+posts[i]._id+div4+posts[i].text+div5;
+            ans+=div1_2+posts[i].date+div3+posts[i]._id+div4+posts[i].text+div5;
         }
         let kolPublications,kolFollowings,kolFollowers;
         if(user.subscribers==null) kolFollowings=0;
@@ -250,8 +276,9 @@ exports.findOneMy = async (req, res) => {
                 "                        </div>\n" +
                 "                    </div>\n" +
                 "                </div>",ans="";
+        let div1_2=div1+req.user.username+div2;
         for(let i=0;i<posts.length;i++){
-            ans+=div1+posts[i].author+div2+posts[i].date+div3+posts[i]._id+div4+posts[i].text+div5;
+            ans+=div1_2+posts[i].date+div3+posts[i]._id+div4+posts[i].text+div5;
         }
         let kolPublications,kolFollowings,kolFollowers;
         if(user.subscribers==null) kolFollowings=0;
@@ -359,8 +386,14 @@ exports.destroy = async (req, res) => {
 };
 
 exports.destroyAllUsers = async (req, res) => {
+    if(!req.isAuthenticated()) res.redirect("/login");
+    if(!req.user.isModerator) res.render("status",{
+        typeOfModel: "User",
+        typeOfOperation: "Delete all users",
+        message: "You are not moderator"
+    })
     //await UserModel.findByIdAndRemove(req.params.id).then(data => {
-    await UserModel.deleteMany({statusAcc: false}).then(data => {
+    await UserModel.deleteMany({isModerator: false}).then(data => {
         //await UserModel.findByIdAndRemove(req.query.id).then(data => {
         if (!data) {
             res.status(404).send({
@@ -369,9 +402,14 @@ exports.destroyAllUsers = async (req, res) => {
 //            res.status(404).render('results', {mydata: "User not found"})
 
         } else {
-            res.send({
-                message: "Users deleted successfully!"
-            });
+            res.render("adminStatus",{
+                typeOfModel: "User",
+                typeOfOperation: "Delete all users",
+                message: "All users deleted succesfully!"
+            })
+            // res.send({
+            //     message: "Users deleted successfully!"
+            // });
 //            res.render('results', {mydata: "user "+data.firstName+" deleted succesfully!"})
         }
     }).catch(err => {

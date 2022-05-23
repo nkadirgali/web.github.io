@@ -28,6 +28,8 @@ body{
 .ashvr{
     border-radius: 10px;
     transition: all .1s ease;
+    background-color: #333333;
+    margin: 0 2.5px;
 }
 .ashvr_active{
     background-color: red;

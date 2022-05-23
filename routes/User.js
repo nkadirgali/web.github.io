@@ -4,8 +4,9 @@ const router = express.Router();
 
 router.get('/',(req,res)=>{
     if(!req.isAuthenticated()) {
-        res.redirect("/login")
-    }UserController.findAll(req,res)
+        res.redirect("/login");
+    }
+    UserController.findAll(req,res);
 });
 router.post('/login',(req,res)=>{
     UserController.login(req,res);

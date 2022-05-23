@@ -16,11 +16,12 @@ exports.create = async (req, res,) => {
     });
 
     await post.save().then(data => {
-        res.render("status",{
-            typeOfModel: "Post",
-            typeOfOperation: "Create",
-            message: "Post created succesfully!"
-        })
+        res.redirect("/profile");
+        // res.render("status",{
+        //     typeOfModel: "Post",
+        //     typeOfOperation: "Create",
+        //     message: "Post created succesfully!"
+        // })
 //        res.render("profile");
 /*        res.send({
             message:"Post created successfully!!",
@@ -130,11 +131,12 @@ exports.destroy = async (req, res) => {
             //     message: `Contacts not found.`
             // });
         }  else {
-            res.render("status",{
-                typeOfModel: "Post",
-                typeOfOperation: "Delete post",
-                message: "Post deleted successfully!"
-            })
+            res.redirect("/profile");
+            // res.render("status",{
+            //     typeOfModel: "Post",
+            //     typeOfOperation: "Delete post",
+            //     message: "Post deleted successfully!"
+            // })
 /*            res.send({
                 message: "Post deleted successfully!"
             });*/

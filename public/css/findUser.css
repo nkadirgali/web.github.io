@@ -1,0 +1,13 @@
+.find1{
+    transition: all ease 0.5s;
+}
+.find2{
+    transition: all ease 0.5s;
+}
+.hide{
+    display: none !important;
+}
+mark{
+    background-color: #fcf8e3;
+    padding: 0px;
+}
